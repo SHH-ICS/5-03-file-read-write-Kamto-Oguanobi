@@ -7,10 +7,10 @@ file_handle = open("questions.txt", 'w')
 #  asks for question
 question = input("Enter the question  ")
 #  ye
-answer1 = input("first answer : ")
-answer2 = input("second answer choice: ")
-answer3 = input("third answer choice: ")
-answer4 = input("fourth answer choice: ")
+answer1 = input("first answer: ")
+answer2 = input("second answer: ")
+answer3 = input("third answer: ")
+answer4 = input("fourth answer: ")
 correct_answer = input("Letter of the answer (a b c d): ")
 
 # Write the question and answers to the file

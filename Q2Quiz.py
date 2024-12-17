@@ -2,18 +2,16 @@
 # The program will keep score of the number of questions answered correctly.
 
 def main():
+    score = 0  # Initialize score
 
     with open("questions.txt", 'r') as file_handle:
         while True:
-            # reads the question
+            # Read the question
             question = file_handle.readline().strip()
-            # .readline() reads one line from the file
-            # .strip() removes any leading or trailing whitespace, including spaces, tabs, and newline characters
             if not question:  # Check if the question is empty (end of file)
                 break
 
-            # Read the answer choices
-            # and remove any extra whitespace
+            # Read the answer choices and remove any extra whitespace
             answer1 = file_handle.readline().strip()
             answer2 = file_handle.readline().strip()
             answer3 = file_handle.readline().strip()
@@ -21,28 +19,27 @@ def main():
 
             # Read the correct answer, split the line to get the correct answer letter, and convert to lowercase
             correct_answer = file_handle.readline().strip().split()[-1].lower()
-            # .split() splits the string into a list where spaces are the delimiter
-            # [-1] accesses the last element in the list, which is the answer letter
-            # .lower() converts the string to lowercase
 
-            # Print the question and answers
+            # Print the question and answers without repeating letters
             print(question)
-            print("a. " + answer1)
-            print("b. " + answer2)
-            print("c. " + answer3)
-            print("d. " + answer4)
+            print("a. " + answer1[3:])
+            print("b. " + answer2[3:])
+            print("c. " + answer3[3:])
+            print("d. " + answer4[3:])
 
             # Get user's answer
             user_answer = input("Your answer (a, b, c, or d): ").strip().lower()
-            # .strip() removes any leading or trailing whitespace, ensuring the user's input is clean
-            # .lower() converts the input to lowercase to make the comparison case-insensitive
-            print(f"you answered: {user_answer}")
+            print(f"You answered: {user_answer}")
 
             # Check if the answer is correct
             if user_answer == correct_answer:
                 print("Correct!\n")
+                score += 1  # Increment score for correct answer
             else:
                 print(f"Incorrect! The correct answer is {correct_answer}.\n")
+
+    # Print the final score
+    print(f"Your final score is: {score}")
 
 # Call the main function directly
 main()
